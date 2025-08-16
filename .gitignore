@@ -1,6 +1,8 @@
 /DesignPattern/obj
 /DesignPattern/bin
 /Tools/obj
-/DesignPatternASP/obj
-/DesignPatternASP/bin
-/DesignPatternASP/wwwroot
+/Tools/bin
+/DesignPatternsASP/obj
+/DesignPatternsASP/bin
+/DesignPatternsASP/wwwroot
+/.idea
