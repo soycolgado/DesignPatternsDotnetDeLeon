@@ -1,0 +1,22 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.DesignPattern.iml
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/DesignPattern/obj
+/DesignPattern/bin
+/Tools/obj
+/DesignPatternASP/obj
+/DesignPatternASP/bin
+/DesignPatternASP/wwwroot
+
+
+
