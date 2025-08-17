@@ -8,7 +8,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<MyConfig>(builder.Configuration.GetSection("MyConfig"));
 builder.Services.AddScoped((factory) =>
 {
-    return  new LocalEarnFactory(builder.Configuration.GetSection("MyConfig").GetValue<decimal>("LocalPercentage"));
+    return new LocalEarnFactory(builder.Configuration.GetSection("MyConfig").GetValue<decimal>("LocalPercentage"));
+});
+builder.Services.AddScoped((factory) =>
+{
+    return new ForeignEarnFactory(0.30m, 20);
 });
 
 var app = builder.Build();
