@@ -12,8 +12,11 @@ builder.Services.AddScoped((factory) =>
 });
 builder.Services.AddScoped((factory) =>
 {
-    return new ForeignEarnFactory(0.30m, 20);
+    return new ForeignEarnFactory(
+        builder.Configuration.GetSection("MyConfig").GetValue<decimal>("ForeignPercentage"),
+        builder.Configuration.GetSection("MyConfig").GetValue<decimal>("Extra"));
 });
+
 
 var app = builder.Build();
 
