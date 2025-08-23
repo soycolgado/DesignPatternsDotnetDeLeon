@@ -1,37 +1,45 @@
 using System;
 using DesignPattern.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesignPattern.RepositoryPattern;
 
 public class BeerRepository : IBeerRepository
 {
+    private DesignPatternsContext _context;
+
+    public BeerRepository(DesignPatternsContext context)
+    {
+        this._context = context;
+    }
     public void Add(Beer data)
     {
-        throw new NotImplementedException();
+        this._context.Beers.Add(data);
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var beer = this._context.Beers.Find(id);
+        this._context.Beers.Remove(beer);
     }
 
     public IEnumerable<Beer> Get()
     {
-        throw new NotImplementedException();
+        return this._context.Beers.ToList();
     }
 
     public Beer Get(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public void Save()
-    {
-        throw new NotImplementedException();
+        return this._context.Beers.Find(id);
     }
 
     public void Update(Beer data)
     {
-        throw new NotImplementedException();
+        this._context.Entry(data).State = EntityState.Modified;
+    }
+
+    public void Save()
+    {
+        this._context.SaveChanges();
     }
 }

@@ -15,14 +15,27 @@
 // var drinkWithBeer = new DrinkWithBeer(10, 1, beer);
 // drinkWithBeer.Build();
 using DesignPattern.Models;
+using DesignPattern.RepositoryPattern;
 
 using (var context = new DesignPatternsContext())
 {
-    var beers = context.Beers.ToList();
+    var beerRepository = new BeerRepository(context);
+    var beer = new Beer();
+    beer.Name = "Corona";
+    beer.Style = "Pilsner";
+    beerRepository.Add(beer);
+    beerRepository.Save();
 
-    foreach (var beer in beers)
+    var beers = beerRepository.Get();
+    foreach (var b in beers)
     {
-        System.Console.WriteLine($"Name: {beer.Name} - Style: {beer.Style}");
-        
+        System.Console.WriteLine(b.Name); ;
     }
+    // var beers = context.Beers.ToList();
+
+    // foreach (var beer in beers)
+    // {
+    //     System.Console.WriteLine($"Name: {beer.Name} - Style: {beer.Style}");
+
+    // }
 }
