@@ -6,21 +6,28 @@ namespace DesignPatternsASP.Controllers;
 
 using biblioteca;
 using Configuration;
+using DesignPatterns.Models.Data;
+using DesignPatterns.Repository;
 using Microsoft.Extensions.Options;
 
 public class HomeController : Controller
 {
     private readonly IOptions<MyConfig> _config;
+    private readonly IRepository<Beer> _repository;
 
-    public HomeController(IOptions<MyConfig> config)
+    public HomeController(
+        IOptions<MyConfig> config,
+        IRepository<Beer> repository)
     {
         _config = config;
+        _repository = repository;
     }
 
     public IActionResult Index()
     {
         Log.GetInstance(_config.Value.PathLog).Save("Entro en index");
-        return View();
+        IEnumerable<Beer> lst = _repository.Get();
+        return View("Index", lst);
     }
 
     public IActionResult Privacy()

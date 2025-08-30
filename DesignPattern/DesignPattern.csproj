@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models/" />
+    <ProjectReference Include="..\DesignPatterns.Models\DesignPatterns.Models.csproj" />
   </ItemGroup>
 
 </Project>

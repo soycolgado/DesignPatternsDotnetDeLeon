@@ -1,5 +1,8 @@
 using biblioteca.Earn;
+using DesignPatterns.Models.Data;
+using DesignPatterns.Repository;
 using DesignPatternsASP.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,13 @@ builder.Services.AddScoped((factory) =>
         builder.Configuration.GetSection("MyConfig").GetValue<decimal>("ForeignPercentage"),
         builder.Configuration.GetSection("MyConfig").GetValue<decimal>("Extra"));
 });
+
+builder.Services.AddDbContext<DesignPatternsContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+});
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
 var app = builder.Build();
