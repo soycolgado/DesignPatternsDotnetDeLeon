@@ -5,4 +5,11 @@
 /DesignPatternsASP/obj
 /DesignPatternsASP/bin
 /DesignPatternsASP/wwwroot
+/DesignPatterns.Repository/obj
+/DesignPatterns.Repository/bin
+/DesignPatterns.Repository/wwwroot
+/DesignPatterns.Models/obj
+/DesignPatterns.Models/bin
+/DesignPatterns.Models/wwwroot
 /.idea
+/.vs
