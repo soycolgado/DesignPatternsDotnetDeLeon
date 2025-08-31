@@ -15,22 +15,30 @@
 // var drinkWithBeer = new DrinkWithBeer(10, 1, beer);
 // drinkWithBeer.Build();
 
-using System.Runtime.CompilerServices;
-using DesignPattern.Models;
-using DesignPattern.RepositoryPattern;
+// using System.Runtime.CompilerServices;
+// using DesignPattern.Models;
+// using DesignPattern.RepositoryPattern;
+// using DesignPattern.UnitOfWorkPattern;
 
-using (var context = new DesignPatternsContext())
-{
-    var beerRepository = new Repository<Beer>(context);
-    var beer = new Beer() {Name = "Corona", Style = "Pilsner"};
-    beerRepository.Add(beer);
-    beerRepository.Save();
+// using (var context = new DesignPatternsContext())
+// {
+//     var unitOfWork = new UnitOfWork(context);
+//     var beers = unitOfWork.Beers;
+//     var beer = new Beer()
+//     {
+//         Name = "Fuller",
+//         Style = "Porter"
+//     };
+//     beers.Add(beer);
 
-    foreach (var b in beerRepository.Get())
-    {
-        Console.WriteLine($"{b.BeerId} - {b.Name}");
-    }
-}
+//     var brands = unitOfWork.Brands;
+//     var brand = new Brand()
+//     {
+//         Name = "Fuller"
+//     };
+//     brands.Add(brand);
+//     unitOfWork.Save();
+// }
 
 // using (var context = new DesignPatternsContext())
 // {
@@ -46,11 +54,18 @@ using (var context = new DesignPatternsContext())
 //     {
 //         System.Console.WriteLine(b.Name); ;
 //     }
-    // var beers = context.Beers.ToList();
+// var beers = context.Beers.ToList();
 
-    // foreach (var beer in beers)
-    // {
-    //     System.Console.WriteLine($"Name: {beer.Name} - Style: {beer.Style}");
+// foreach (var beer in beers)
+// {
+//     System.Console.WriteLine($"Name: {beer.Name} - Style: {beer.Style}");
 
-    // }
 // }
+// }
+
+using DesignPattern.StrategyPattern;
+
+var context = new Context(new CarStrategy());
+context.Run();
+context.Strategy = new MotoStrategy();
+context.Run();
