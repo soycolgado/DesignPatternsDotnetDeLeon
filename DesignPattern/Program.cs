@@ -63,9 +63,18 @@
 // }
 // }
 
-using DesignPattern.StrategyPattern;
+// using DesignPattern.StrategyPattern;
+//
+// var context = new Context(new CarStrategy());
+// context.Run();
+// context.Strategy = new MotoStrategy();
+// context.Run();
 
-var context = new Context(new CarStrategy());
-context.Run();
-context.Strategy = new MotoStrategy();
-context.Run();
+using DesignPattern.BuilderPattern;
+
+var builder = new PreparedAlcoholicDrinkConcreteBuilder();
+var barmanDirector = new BarmanDirector(builder);
+barmanDirector.PreparePiñaColada();
+
+var preparedDrink = builder.GetPreparedDrink();
+Console.WriteLine(preparedDrink.Result);
