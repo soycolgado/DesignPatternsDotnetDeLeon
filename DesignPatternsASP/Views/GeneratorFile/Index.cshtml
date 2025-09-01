@@ -14,6 +14,11 @@
 </div>
 <script>
     function generate(){
-        
+        let optionFile = document.getElementById("optionFile").value;
+        fetch("@Url.Content("~/GeneratorFile/CreateFile")" + "?optionFile=" + optionFile)
+            .then(res => res.json())
+            .then(json => {
+                alert(json);
+            });
     }
 </script>

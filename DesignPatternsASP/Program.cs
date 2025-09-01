@@ -1,4 +1,5 @@
 using biblioteca.Earn;
+using biblioteca.Generator;
 using DesignPatterns.Models.Data;
 using DesignPatterns.Repository;
 using DesignPatternsASP.Configuration;
@@ -27,6 +28,7 @@ builder.Services.AddDbContext<DesignPatternsContext>(options =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<GeneratorConcreteBuilder>();
 
 
 var app = builder.Build();
